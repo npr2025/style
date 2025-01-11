@@ -1,0 +1,4868 @@
+/* ヘッダーの固定位置とコンテンツの間にスペースを確保 */
+body {
+    padding-top: 150px !important; /* ヘッダーの高さ分の余白を追加 */
+}
+
+/* 必要に応じて、#tile-product-details の位置調整 */
+#tile-product-details {
+    position: relative !important;
+    margin-top: 0 !important; /* 不要な上のマージンを削除 */
+    padding-top: 0 !important; /* パディング調整 */
+}
+
+.transparent-space {
+   height: 150px;   /* 縦のスペースを150pxに設定 */
+   background-color: transparent; /* 背景を透明に設定 */
+}
+
+/* ヘッダーが固定されている場合、z-index を調整 */
+header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important; /* ヘッダーが他の要素に隠れないようにする */
+    background-color: #fff !important;  /* 背景色 */
+    width: 100% !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important; /* シャドウ */
+}
+
+/* Ecwid背景を完全に透明にする */
+.ecwid-productBrowser-wrapper {
+    background-image: none !important;
+    background-color: transparent !important;
+    background-size: auto !important;
+    background-position: initial !important;
+    background-repeat: no-repeat !important;
+    border: none !important;
+}
+
+
+/*----------------------------------------------
+  グローバルのルート設定（変数）
+----------------------------------------------*/
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/*----------------------------------------------
+  リセットや全体的な調整
+----------------------------------------------*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+
+/* ヘッダー内のリンク */
+header a, header .ins-link {
+  color: #FFD600 !important; /* 通常リンク色: 黄色 */
+}
+header a:hover, header .ins-link:hover {
+  color: #FFFFFF !important; /* ホバー時は白文字 */
+  background-color: transparent !important;
+}
+
+header a.red-background, header .ins-link.red-background {
+    color: #FFFFFF !important; /* 赤背景時のリンク色を白に設定 */
+}
+
+/*----------------------------------------------
+  商品カードのスタイル
+----------------------------------------------*/
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/*----------------------------------------------
+  ボタンのスタイル
+----------------------------------------------*/
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;
+    color: white !important;
+    border: 2px solid #B01A13 !important;
+    font-size: 16px !important;
+    padding: 12px 30px !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    outline: none !important;
+    border-radius: 5px !important;
+}
+
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;
+    color: #B01A13 !important;
+    border: 2px solid #B01A13 !important;
+    transition: all 0.3s ease !important;
+}
+
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;
+    color: white !important;
+}
+
+/*----------------------------------------------
+  リンクのスタイル
+----------------------------------------------*/
+a, .ins-link {
+    color: #666 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important;
+}
+
+a:hover, .ins-link:hover {
+    color: #B01A13 !important;
+    background-color: transparent !important;
+}
+
+a.red-background, .ins-link.red-background {
+    color: #fff !important;
+    background-color: transparent !important;
+}
+
+/*----------------------------------------------
+  タイトルのスタイル
+----------------------------------------------*/
+.page-title__name, .product-details__product-title {
+    color: #B01A13 !important;
+    text-transform: uppercase !important;
+}
+
+/*----------------------------------------------
+  商品タイトルリンクのスタイル
+----------------------------------------------*/
+.grid-product__title a {
+    color: #666 !important;
+    text-decoration: none !important;
+}
+
+.grid-product__title a:hover {
+    color: #B01A13 !important;
+    background-color: transparent !important;
+}
+
+.grid-product__title a:visited {
+    color: #666 !important;
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;
+    background-color: transparent !important;
+}
+
+a, .ins-link {
+  color: #666 !important;   /* 通常時 */
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: color 0.3s ease !important;
+}
+a:hover, .ins-link:hover {
+  color: #B01A13 !important; /* ホバー時は赤 */
+  background-color: transparent !important;
+}
+
+/* .grid-category__title-inner などのカテゴリボタン例 */
+/* 通常時のスタイル */
+.ecwid .grid-category__title-inner {
+  background-color: white !important;
+  color: #B01A13 !important;
+  border: 1px solid #B01A13 !important;
+  font-size: 14px !important;
+  padding: 10px 15px !important;
+  text-transform: uppercase !important;
+  font-weight: bold !important;
+  border-radius: 5px !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: 10px !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  box-sizing: border-box !important;
+}
+
+.ecwid .grid-category__title-inner:hover {
+  background-color: #8A0D0F !important;
+  color: white !important;
+  border: 1px solid #8A0D0F !important;
+}
+
+.ecwid .grid-category__title-inner:active {
+  background-color: white !important;
+  color: #B01A13 !important;
+  border: 1px solid #B01A13 !important;
+
+/*----------------------------------------------
+  商品タイトルリンクのスタイル
+----------------------------------------------*/
+.grid-product__title a {
+    color: #666 !important;
+    text-decoration: none !important;
+}
+
+.grid-product__title a:hover {
+    color: #B01A13 !important;
+    background-color: transparent !important;
+}
+
+.grid-product__title a:visited {
+    color: #666 !important;
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;
+    background-color: transparent !important;
+}
+
+/* リンクの一般スタイル */
+a, .ins-link {
+    color: #666 !important; /* 通常時 */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important;
+}
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤 */
+    background-color: transparent !important;
+}
+
+/*----------------------------------------------
+  カテゴリボタンのスタイル
+----------------------------------------------*/
+/* 通常時 */
+.ecwid .grid-category__title-inner {
+    background-color: white !important;
+    color: #B01A13 !important;
+    border: 1px solid #B01A13 !important;
+    font-size: 14px !important;
+    padding: 10px 15px !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    border-radius: 5px !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+}
+
+/* ホバー時 */
+.ecwid .grid-category__title-inner:hover {
+    background-color: #8A0D0F !important;
+    color: white !important;
+    border: 1px solid #8A0D0F !important;
+}
+
+/* アクティブ時 */
+.ecwid .grid-category__title-inner:active {
+    background-color: white !important;
+    color: #B01A13 !important;
+    border: 1px solid #B01A13 !important;
+}
+
+/*----------------------------------------------
+  ソーシャルメディアアイコンのスタイル
+----------------------------------------------*/
+.ec-likely__widget {
+    display: inline-block !important;
+    margin: 10px !important;
+    padding: 5px !important;
+    text-decoration: none !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-color: transparent !important;
+}
+
+/* アイコンの画像を指定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    width: 30px !important;
+    height: 30px !important;
+}
+
+/* ホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important;
+    transition: transform 0.3s ease !important;
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important;
+}
+
+/* SVGアイコンを非表示 */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important;
+}
+
+/*----------------------------------------------
+  背景とセクションスタイル
+----------------------------------------------*/
+#tile-product-details {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: transparent;
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: none; /* モバイルでは背景画像を非表示 */
+        background-color: transparent; /* 背景色は透明 */
+    }
+}
+
+.secure-container {
+    position: relative;  /* absolute を relative に変更 */
+    margin-top: 0 !important; /* 不要な上マージンを削除 */
+}
+
+
+.secure-logo {
+    max-width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    touch-action: none;
+    z-index: 1;
+}
+
+.category-title {
+    font-size: 24px;
+    color: #B01A13;
+    font-weight: bold;
+    margin: 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+
+
+/*----------------------------------------------
+  背景画像のカスタマイズ
+----------------------------------------------*/
+.ins-tile__made-with-inner {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736046594/payment_ilxdzn.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    width: 250px !important;
+    height: 100px !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+    color: transparent !important;
+}
+
+.ins-tile__made-with-inner span {
+    display: none !important;
+}
+
+
+/* 画像の右クリックを禁止 */
+img {
+    pointer-events: none !important; /* 画像のクリックを無効化 */
+}
+
+/* 画像のドラッグを禁止 */
+img {
+    -webkit-user-drag: none !important; /* 画像のドラッグ禁止 */
+    user-select: none !important; /* 画像選択を禁止 */
+}
+
+/* ページ全体で右クリックを禁止 */
+body {
+    -webkit-touch-callout: none !important; /* iOSでのコピー・保存禁止 */
+    -webkit-user-drag: none !important; /* 画像のドラッグ禁止 */
+}
+
+/* ユーザーのテキスト選択は許可 */
+body {
+    -webkit-user-select: text !important; /* テキスト選択を許可 */
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important; /* テキスト選択を許可 */
+}
+
+
+/*----------------------------------------------
+  ヘッダー内のリンクのスタイル
+----------------------------------------------*/
+header a, header .ins-link {
+    color: #FFD600 !important; /* 通常時のリンク色は黄色 */
+}
+
+header a:hover, header .ins-link:hover {
+    color: #FFFFFF !important; /* ホバー時のリンク色を白に変更 */
+    background-color: transparent !important; /* 背景色は透明のまま */
+}
+
+header a.red-background, header .ins-link.red-background {
+    color: #FFFFFF !important; /* 赤背景時のリンク色を白に設定 */
+}
+
+
+
+
+/*----------------------------------------------
+  商品ページ背景とモバイル対応
+----------------------------------------------*/
+#tile-product-details {
+    min-height: auto; /* 自動調整 */
+    margin-top: 0 !important; /* 不要な上マージンを削除 */
+}
+
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: none;
+        background-color: transparent;
+    }
+}
+
+/*----------------------------------------------
+  ヘッダー固定（スクロール時）設定
+----------------------------------------------*/
+header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 10000 !important;    /* 最優先で表示 */
+    background-color: #fff !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;  /* より強力なシャドウ */
+    width: 100% !important;
+    transition: top 0.3s ease-in-out !important;  /* 滑らかなアニメーション */
+}
+
+/* スクロール時にヘッダーが隠れる */
+header.scrolled {
+    top: -100px !important;  /* ヘッダーを完全に隠す */
+}
+
+
+/*----------------------------------------------
+  その他のセクション設定
+----------------------------------------------*/
+.secure-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 900px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secure-logo {
+    max-width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    touch-action: none;
+    z-index: 1;
+}
+
+.category-title {
+    font-size: 24px;
+    color: #B01A13;
+    font-weight: bold;
+    margin: 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+
+
+//*----------------------------------------------
+  .ec-grid, .grid__description, .grid__description-inner の背景を透明に設定
+----------------------------------------------*/
+.ec-grid, .grid__description, .grid__description-inner {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+    background: transparent !important;        /* 背景を透明に強制設定 */
+    z-index: 9999 !important;                  /* 最前面に配置 */
+}
+
+
+/*----------------------------------------------
+  商品ページ背景とモバイル対応（背景画像を透明化）
+----------------------------------------------*/
+#tile-product-details {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg') !important; /* 背景画像はそのまま */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg') !important; /* 背景画像を保持 */
+        background-color: transparent !important;  /* 背景色を透明に設定 */
+    }
+}
+
+
+/*----------------------------------------------
+  その他のセクション設定
+----------------------------------------------*/
+.secure-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 900px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secure-logo {
+    max-width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    touch-action: none;
+    z-index: 1;
+}
+
+.category-title {
+    font-size: 24px;
+    color: #B01A13;
+    font-weight: bold;
+    margin: 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/*----------------------------------------------
+  グリッドカテゴリーのボタン部分 (.grid-category__title-inner) 
+  （提案されたスタイルを適用）
+----------------------------------------------*/
+div .grid-category__title-inner {
+  background-color: white !important;       /* 背景色を白 */
+  color: #B01A13 !important;               /* テキスト色を赤 */
+  border: 1px solid #B01A13 !important;    /* 境界線を赤に */
+  font-size: 14px !important;              /* フォントサイズ */
+  padding: 10px 15px !important;           /* 内側余白 */
+  text-transform: uppercase !important;    /* テキストを大文字に */
+  font-weight: bold !important;            /* 太字 */
+  border-radius: 5px !important;           /* 角を丸める */
+  display: inline-flex !important;         /* インラインフレックスで配置 */
+  justify-content: center !important;      /* 水平方向の中央揃え */
+  align-items: center !important;          /* 垂直方向の中央揃え */
+  flex-wrap: nowrap !important;            /* 折り返しを無効化 */
+  gap: 10px !important;                    /* 子要
+
+/* ホバー時のスタイル */
+div .grid-category__title-inner:hover {
+  background-color: #8A0D0F !important;     /* 背景色を暗い赤に */
+  color: white !important;                 /* テキスト色を白 */
+  border: 1px solid #8A0D0F !important;    /* 境界線も暗い赤 */
+}
+
+/* クリック時のスタイル（:active） */
+div .grid-category__title-inner:active {
+  background-color: white !important;      /* 背景色を白に戻す */
+  color: #B01A13 !importantgre;               /* テキスト色を赤に */
+  border: 1px solid #B01A13 !important;    /* 境界線を赤に */
+}
+  /* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+html .ins-tile__link[aria-label="Report abuse in a new tab"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;  /* 完全に透明に */
+    pointer-events: none !important;  /* クリックできないように */
+    height: 0 !important;  /* 高さゼロ */
+    width: 0 !important;   /* 幅ゼロ */
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+
+
+/* 全体のスタイル */
+#tile-product-details {
+    position: relative; /* 要素の基準位置を指定 */
+    width: 100%; /* 横幅を全体に設定 */
+    min-height: 100vh; /* 高さを全画面に設定 */
+    overflow: hidden; /* はみ出す要素を隠す */
+    background-color: transparent; /* 背景色を透明に設定 */
+}
+
+/* モバイル用スタイル (背景画像を非表示にする) */
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: none !important; /* モバイルで背景画像を非表示 */
+        background-color: transparent !important; /* 背景色を透明に */
+    }
+}
+/* .secure-container そのものを上方向に引き上げる */
+.secure-container {
+  position: absolute
+  margin-top: -80px; /* 好きな分だけ引き上げる */
+
+  /* 下の要素と重なりたくないなら padding-bottomを足すなど */
+  /* z-index も必要なら加える */
+  z-index: 9999;
+}
+
+ 
+/*----------------------------------------------
+  グローバルのルート設定（変数）
+----------------------------------------------*/
+:root {
+  --background-color-h: 0;
+  --background-color-s: 0%;
+  --background-color-l: 100%; /* 明るい白 */
+  --background-color-a: 1;
+  --button-color-h: 0;
+  --button-color-s: 0%;
+  --button-color-l: 20%;
+  --button-color-b: .2;
+  --button-color-a: 1;
+  --link-color-h: 206;
+  --link-color-s: 76%;
+  --link-color-l: 43%;
+  --link-color-b: .435;
+  --link-color-a: 1;
+  --title-font-size: 48px;    /* タイトルサイズ */
+  --subtitle-font-size: 22px; /* サブタイトルサイズ */
+  --button-font-size: 16px;   /* ボタンのサイズ */
+}
+
+/*----------------------------------------------
+  リセットや全体的な調整
+----------------------------------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/*----------------------------------------------
+  ヘッダーの下に配置するセクション
+----------------------------------------------*/
+.secure-container {
+  /* ヘッダー直下に配置したい場合は、ヘッダータグの直後にHTMLを置き、
+     さらに余白をつけたい場合は margin-top を指定 */
+  margin-top: 20px; 
+  padding: 20px;
+  background: #fff; /* 必要なら背景色を指定 */
+}
+
+.secure-background {
+  text-align: center;
+  /* もし背景全体を画像で埋めたければ、background-imageなどを適用
+     例）background: url('任意の背景画像'); background-size: cover; 等 */
+}
+
+.secure-logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.description {
+  text-align: center;
+  margin: 0 auto 15px auto;
+  line-height: 1.5;
+  color: #333;
+}
+
+.category-title {
+  text-align: center;
+  font-size: var(--subtitle-font-size);
+  margin: 0 auto 20px auto;
+  color: #111;
+}
+
+/*----------------------------------------------
+  グリッドカテゴリーのボタン部分 (.grid-category__title-inner) 
+  （提案されたスタイルを適用）
+----------------------------------------------*/
+body .grid-category__title-inner {
+  background-color: white !important;       /* 背景色を白 */
+  color: #B01A13 !important;               /* テキスト色を赤 */
+  border: 1px solid #B01A13 !important;    /* 境界線を赤に */
+  font-size: 14px !important;              /* フォントサイズ */
+  padding: 10px 15px !important;           /* 内側余白 */
+  text-transform: uppercase !important;    /* テキストを大文字に */
+  font-weight: bold !important;            /* 太字 */
+  border-radius: 5px !important;           /* 角を丸める */
+  display: inline-flex !important;         /* インラインフレックスで配置 */
+  justify-content: center !important;      /* 水平方向の中央揃え */
+  align-items: center !important;          /* 垂直方向の中央揃え */
+  flex-wrap: nowrap !important;            /* 折り返しを無効化 */
+  gap: 10px !important;                    /* 子要素間の間隔 */
+  text-decoration: none !important;        /* リンクの下線を削除 */
+  transition: all 0.3s ease !important;    /* スムーズな変化効果 */
+  box-sizing: border-box !important;       /* ボックスモデルを設定 */
+}
+
+/* ホバー時のスタイル */
+body .grid-category__title-inner:hover {
+  background-color: #8A0D0F !important;     /* 背景色を暗い赤に */
+  color: white !important;                 /* テキスト色を白 */
+  border: 1px solid #8A0D0F !important;    /* 境界線も暗い赤 */
+}
+
+/* クリック時のスタイル（:active） */
+body .grid-category__title-inner:active {
+  background-color: white !important;      /* 背景色を白に戻す */
+  color: #B01A13 !important;               /* テキスト色を赤に */
+  border: 1px solid #B01A13 !important;    /* 境界線を赤に */
+}
+  /* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの通常時のスタイル */
+header a, header .ins-link {
+    color: #FFD600 !important; /* 通常時のリンク色は黄色 */
+}
+
+/* ヘッダー内のリンクのホバー時のスタイル */
+header a:hover, header .ins-link:hover {
+    color: #FFFFFF !important; /* ホバー時のリンク色を白に変更 */
+    background-color: transparent !important; /* 背景色は透明のまま */
+}
+
+/* 赤背景でリンクの視認性を確保 */
+header a.red-background, header .ins-link.red-background {
+    color: #FFFFFF !important; /* 赤背景時のリンク色を白に設定 */
+}  /* 全体スタイル: ヘッダーやフッターを除外 */
+body, .ins-tile__wrap {
+    margin: 0; /* 外側余白をリセット */
+    padding: 0; /* 内側余白をリセット */
+    text-align: center; /* テキストを中央揃え */
+    overflow-x: hidden; /* 横スクロールを防止 */
+}
+
+/* shop-introduction のみ調整 */
+.shop-introduction {
+    margin: 20px auto; /* 上下に適度な余白 */
+    padding: 10px; /* 内側余白 */
+    text-align: center; /* テキスト中央揃え */
+    max-width: 800px; /* 最大幅を指定 */
+}
+
+/* shop-about のみ調整 */
+.shop-about {
+    margin: 30px auto; /* 上下の余白を広めに */
+    padding: 15px; /* 内側余白 */
+    line-height: 1.6; /* 行間を設定 */
+    max-width: 900px; /* 最大幅を指定 */
+    background-color: #f9f9f9; /* 背景色 */
+    border-radius: 10px; /* 角を丸くする */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を追加 */
+}
+
+/* shop-about 内の要素調整 */
+.shop-about h2 {
+    margin: 15px 0; /* 見出しに上下の余白 */
+    padding: 0; /* 内側余白なし */
+    font-size: 24px; /* フォントサイズ */
+    font-weight: bold; /* 太字 */
+    text-align: center; /* 中央揃え */
+}
+
+.shop-about p {
+    margin: 10px 0; /* 各段落の間隔 */
+    padding: 0; /* パディングを削除 */
+    line-height: 1.8; /* 行間を広げる */
+    font-size: 16px; /* 読みやすいフォントサイズ */
+}
+
+/* secure-container スタイル */
+.secure-container {
+    display: flex;
+    flex-direction: column; /* 縦方向に並べる */
+    justify-content: center; /* 垂直方向の中央揃え */
+    align-items: center; /* 水平方向の中央揃え */
+    text-align: center; /* テキストを中央揃え */
+    padding: 20px; /* コンテナの内側余白 */
+    margin: 0 auto; /* 水平中央揃え */
+    max-width: 900px; /* 最大幅 */
+    background-color: #ffffff; /* 白背景 */
+    border: 1px solid #ddd; /* 薄いボーダー */
+    border-radius: 8px; /* 角を丸くする */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+    box-sizing: border-box; /* ボックスモデル設定 */
+}
+
+/* フッター、ヘッダーにはスタイル適用しない */
+header, footer {
+    all: unset; /* 既存のスタイルを無効化 */
+}
+
+/* モバイル対応 (幅768px以下) */
+@media screen and (max-width: 768px) {
+    .shop-introduction, .shop-about, .secure-container {
+        padding: 15px; /* 内側余白を縮小 */
+        margin: 10px auto; /* 外側余白を調整 */
+        max-width: 100%; /* 横幅をデバイス幅に合わせる */
+    }
+
+    .shop-about h2 {
+        font-size: 20px; /* 見出しの文字サイズを縮小 */
+    }
+
+    .shop-about p {
+        font-size: 14px; /* 段落の文字サイズを縮小 */
+    }
+}
+
+
+/* 背景全体 */
+.secure-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    height: 150px;
+    background-color: #f4f4f4; /* 背景色 */
+    border-radius: 15px; /* 角を丸める */
+    overflow: hidden; /* 内容のオーバーフローを非表示 */
+    margin-bottom: 20px; /* 背景下の余白 */
+}
+
+/* ロゴ画像 */
+.secure-logo {
+    max-width: 100%;
+    height: auto;
+    pointer-events: none; /* クリックや右クリックを無効化 */
+    user-select: none; /* 選択を無効化 */
+    -webkit-user-drag: none; /* ドラッグを無効化 */
+    -webkit-touch-callout: none; /* モバイル長押し無効化 */
+    touch-action: none; /* タッチ操作を無効化 */
+    z-index: 1;
+}
+
+/* 見出しのスタイル */
+.category-title {
+    font-size: 24px;
+    color: #B01A13;
+    font-weight: bold;
+    margin: 10px 0; /* 上下のマージン */
+    text-transform: uppercase; /* 大文字に変換 */
+    text-align: center;
+}
+
+
+/* tile-product-details に背景画像を設定 */
+#tile-product-details {
+    position: relative; /* 要素の基準位置を指定 */
+    width: 100%; /* 横幅を全体に設定 */
+    min-height: 100vh; /* 高さを全画面に設定 */
+    overflow: hidden; /* はみ出す要素を隠す */
+    background-color: transparent; /* 背景を透明に設定 */
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg'; /* 背景画像を設定 */
+    background-size: cover; /* 画像を全体にフィットさせる */
+    background-position: center center; /* 背景画像を中央に配置 */
+    background-repeat: no-repeat; /* 繰り返しなし */
+    background-attachment: fixed; /* 背景画像を固定（パララックス効果） */
+}
+
+/* モバイル用スタイル (幅768px以下の場合) */
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: none; /* 背景画像を非表示 */
+        background-color: transparent; /* 背景は透明を維持 */
+    }
+}
+
+
+/* 通常時のスタイル */
+.ecwid .grid-category__title-inner {
+  background-color: white !important;
+  color: #B01A13 !important;
+  border: 1px solid #B01A13 !important;
+  font-size: 14px !important;
+  padding: 10px 15px !important;
+  text-transform: uppercase !important;
+  font-weight: bold !important;
+  border-radius: 5px !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: 10px !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  box-sizing: border-box !important;
+}
+
+.ecwid .grid-category__title-inner:hover {
+  background-color: #8A0D0F !important;
+  color: white !important;
+  border: 1px solid #8A0D0F !important;
+}
+
+.ecwid .grid-category__title-inner:active {
+  background-color: white !important;
+  color: #B01A13 !important;
+  border: 1px solid #B01A13 !important;
+}
+
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの色を黄色に設定 */
+header a, header .ins-link {
+    color: #FFD600 !important;  /* リンクの色を黄色に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 0 5px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  #tile-product-details {
+    position: relative; /* 親要素に相対配置 */
+}
+
+:root {
+    --container-width: 80%; /* 画面の80%に合わせる */
+}
+
+body {
+    position: relative; /* bodyに相対配置 */
+    margin: 0; /* マージンをリセット */
+}
+
+/* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの通常時のスタイル */
+header a, header .ins-link {
+    color: #FFD600 !important; /* 通常時のリンク色は黄色 */
+}
+
+/* ヘッダー内のリンクのホバー時のスタイル */
+header a:hover, header .ins-link:hover {
+    color: #FFFFFF !important; /* ホバー時のリンク色を白に変更 */
+    background-color: transparent !important; /* 背景色は透明のまま */
+}
+
+/* 赤背景でリンクの視認性を確保 */
+header a.red-background, header .ins-link.red-background {
+    color: #FFFFFF !important; /* 赤背景時のリンク色を白に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+ /* tile-product-details に背景画像を設定 */
+#tile-product-details {
+    position: relative; /* 要素の基準位置を指定 */
+    width: 100%; /* 横幅を全体に設定 */
+    min-height: 100vh; /* 高さを全画面に設定 */
+    overflow: hidden; /* はみ出す要素を隠す */
+    background-color: transparent; /* 背景を透明に設定 */
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg'; /* 背景画像を設定 */
+    background-size: cover; /* 画像を全体にフィットさせる */
+    background-position: center center; /* 背景画像を中央に配置 */
+    background-repeat: no-repeat; /* 繰り返しなし */
+    background-attachment: fixed; /* 背景画像を固定（パララックス効果） */
+}
+
+/* モバイル用スタイル (幅768px以下の場合) */
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: none; /* 背景画像を非表示 */
+        background-color: transparent; /* 背景は透明を維持 */
+    } 
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 0 5px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  #tile-product-details {
+    position: relative; /* 親要素に相対配置 */
+}
+
+:root {
+    --container-width: 80%; /* 画面の80%に合わせる */
+}
+
+body {
+    position: relative; /* bodyに相対配置 */
+    margin: 0; /* マージンをリセット */
+}
+
+/* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの色を黄色に設定 */
+header a, header .ins-link {
+    color: #FFD600 !important;  /* リンクの色を黄色に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 2px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  /* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの色を黄色に設定 */
+header a, header .ins-link {
+    color: #FFD600 !important;  /* リンクの色を黄色に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 0 5px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  #tile-product-details {
+    position: relative; /* 親要素に相対配置 */
+}
+
+:root {
+    --container-width: 80%; /* 画面の80%に合わせる */
+}
+
+body {
+    position: relative; /* bodyに相対配置 */
+    margin: 0; /* マージンをリセット */
+}
+
+/* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの色を黄色に設定 */
+header a, header .ins-link {
+    color: #FFD600 !important;  /* リンクの色を黄色に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 10px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  /* ルートの基本設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+
+/* ins-tile__link の背景を画像に変更 */
+.ins-tile__made-with-inner {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736046594/payment_ilxdzn.png') !important; /* 画像のURL */
+    background-size: contain !important;  /* 画像サイズを調整 */
+    background-repeat: no-repeat !important;  /* 繰り返し表示しない */
+    width: 250px !important;  /* 画像に合わせた幅を設定 */
+    height: 100px !important;  /* 高さを設定 */
+    display: inline-block !important; /* インラインブロックとして表示 */
+    text-decoration: none !important; /* テキストリンクの下線を消す */
+    color: transparent !important; /* テキスト色を透明に設定 */
+}
+
+/* もし span が含まれていたらその内容も非表示にする */
+.ins-tile__made-with-inner span {
+    display: none !important; /* span内のテキストを非表示 */
+}
+
+
+
+/* ins-tile__link の背景を画像に変更 */
+.ins-tile__made-with-inner {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736046594/payment_ilxdzn.png') !important; /* 画像のURL */
+    background-size: contain !important;  /* 画像サイズを調整 */
+    background-repeat: no-repeat !important;  /* 繰り返し表示しない */
+    width: 250px !important;  /* 画像に合わせた幅を設定 */
+    height: 100px !important;  /* 高さを設定 */
+    display: inline-block !important; /* インラインブロックとして表示 */
+    text-decoration: none !important; /* テキストリンクの下線を消す */
+    color: transparent !important; /* テキスト色を透明に設定 */
+}
+
+/* もし span が含まれていたらその内容も非表示にする */
+.ins-tile__made-with-inner span {
+    display: none !important; /* span内のテキストを非表示 */
+}
+  /* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの色を黄色に設定 */
+header a, header .ins-link {
+    color: #FFD600 !important;  /* リンクの色を黄色に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 10px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  /* ルートの基本設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+
+/* ins-tile__link の背景を画像に変更 */
+.ins-tile__made-with-inner {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736046594/payment_ilxdzn.png') !important; /* 画像のURL */
+    background-size: contain !important;  /* 画像サイズを調整 */
+    background-repeat: no-repeat !important;  /* 繰り返し表示しない */
+    width: 250px !important;  /* 画像に合わせた幅を設定 */
+    height: 100px !important;  /* 高さを設定 */
+    display: inline-block !important; /* インラインブロックとして表示 */
+    text-decoration: none !important; /* テキストリンクの下線を消す */
+    color: transparent !important; /* テキスト色を透明に設定 */
+}
+
+/* もし span が含まれていたらその内容も非表示にする */
+.ins-tile__made-with-inner span {
+    display: none !important; /* span内のテキストを非表示 */
+}
+
+
+
+/*----------------------------------------------
+  div.ec-wrapper の背景を完全に透明に設定
+----------------------------------------------*/
+/*----------------------------------------------
+  body や html の背景を透明に設定
+----------------------------------------------*/
+html, body {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+}
+
+/*----------------------------------------------
+  ec-wrapper の背景を透明に設定
+----------------------------------------------*/
+.ec-wrapper {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+}
+
+/*----------------------------------------------
+  ecwid_body の背景を透明に設定
+----------------------------------------------*/
+body#ecwid_body {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+
+/*----------------------------------------------
+  .ecwid-productBrowser-head の背景を透明に設定
+----------------------------------------------*/
+.ecwid-productBrowser-head {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+    background: transparent !important;        /* 背景を透明に強制設定 */
+}
+
+/*----------------------------------------------
+  .ec-store__content-wrapper の背景を透明に設定
+----------------------------------------------*/
+.ec-store__content-wrapper {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+    background: transparent !important;        /* 背景を透明に強制設定 */
+}
+
+/*----------------------------------------------
+  .product-details__top の背景を透明に設定
+----------------------------------------------*/
+.product-details__top {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+    background: transparent !important;        /* 背景を透明に強制設定 */
+}
+
+
+
+
+
+
+/*----------------------------------------------
+  グローバルのルート設定（変数）
+----------------------------------------------*/
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/*----------------------------------------------
+  リセットや全体的な調整
+----------------------------------------------*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/*----------------------------------------------
+  商品カードのスタイル
+----------------------------------------------*/
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/*----------------------------------------------
+  ボタンのスタイル
+----------------------------------------------*/
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;
+    color: white !important;
+    border: 2px solid #B01A13 !important;
+    font-size: 16px !important;
+    padding: 12px 30px !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    outline: none !important;
+    border-radius: 5px !important;
+}
+
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;
+    color: #B01A13 !important;
+    border: 2px solid #B01A13 !important;
+    transition: all 0.3s ease !important;
+}
+
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;
+    color: white !important;
+}
+
+/*----------------------------------------------
+  リンクのスタイル
+----------------------------------------------*/
+a, .ins-link {
+    color: #666 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important;
+}
+
+a:hover, .ins-link:hover {
+    color: #B01A13 !important;
+    background-color: transparent !important;
+}
+
+a.red-background, .ins-link.red-background {
+    color: #fff !important;
+    background-color: transparent !important;
+}
+
+/*----------------------------------------------
+  タイトルのスタイル
+----------------------------------------------*/
+.page-title__name, .product-details__product-title {
+    color: #B01A13 !important;
+    text-transform: uppercase !important;
+}
+
+/*----------------------------------------------
+  商品タイトルリンクのスタイル
+----------------------------------------------*/
+.grid-product__title a {
+    color: #666 !important;
+    text-decoration: none !important;
+}
+
+.grid-product__title a:hover {
+    color: #B01A13 !important;
+    background-color: transparent !important;
+}
+
+.grid-product__title a:visited {
+    color: #666 !important;
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;
+    background-color: transparent !important;
+}
+
+/*----------------------------------------------
+  アイコンとソーシャルメディアのスタイル
+----------------------------------------------*/
+.ec-likely__widget {
+    display: inline-block !important;
+    margin: 10px !important;
+    padding: 5px !important;
+    text-decoration: none !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-color: transparent !important;
+}
+
+.ec-likely__widget--facebook .ec-likely__icon,
+.ec-likely__widget--twitter .ec-likely__icon,
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+}
+
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.ec-likely__button {
+    display: none !important;
+}
+
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important;
+}
+
+/*----------------------------------------------
+  背景とセクションスタイル
+----------------------------------------------*/
+#tile-product-details {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: transparent;
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg'); /* モバイルで背景画像を表示 */
+        background-color: transparent;
+    }
+}
+
+.secure-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 900px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secure-logo {
+    max-width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    touch-action: none;
+    z-index: 1;
+}
+
+.category-title {
+    font-size: 24px;
+    color: #B01A13;
+    font-weight: bold;
+    margin: 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+
+
+/*----------------------------------------------
+  背景画像のカスタマイズ
+----------------------------------------------*/
+.ins-tile__made-with-inner {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736046594/payment_ilxdzn.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    width: 250px !important;
+    height: 100px !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+    color: transparent !important;
+}
+
+.ins-tile__made-with-inner span {
+    display: none !important;
+}
+
+
+
+
+/*----------------------------------------------
+  ヘッダー内のリンクのスタイル
+----------------------------------------------*/
+header {
+  position: static !important; /* 不要なrelative/absoluteを解除 */
+  width: 100% !important;      
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+  /* 背景色や高さなど必要に応じて追加 */
+}
+
+
+
+
+
+/*----------------------------------------------
+  商品ページ背景とモバイル対応
+----------------------------------------------*/
+#tile-product-details {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: transparent;
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: none;
+        background-color: transparent;
+    }
+}
+
+/*----------------------------------------------
+  ヘッダー固定（スクロール時）設定
+----------------------------------------------*/
+header {
+  position: static !important; /* 不要なrelative/absoluteを解除 */
+  width: 100% !important;      
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+    width: 100% !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  /* 背景色や高さなど必要に応じて追加 */
+}
+
+/* ヘッダーがスクロールで隠れる */
+header.scrolled {
+    top: -80px; /* ヘッダーがスクロール時に隠れる */
+}
+
+
+/*----------------------------------------------
+  その他のセクション設定
+----------------------------------------------*/
+.secure-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 900px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secure-logo {
+    max-width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    touch-action: none;
+    z-index: 1;
+}
+
+.category-title {
+    font-size: 24px;
+    color: #B01A13;
+    font-weight: bold;
+    margin: 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+
+
+
+//*----------------------------------------------
+  .ec-grid, .grid__description, .grid__description-inner の背景を透明に設定
+----------------------------------------------*/
+.ec-grid, .grid__description, .grid__description-inner {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+    background: transparent !important;        /* 背景を透明に強制設定 */
+    z-index: 9999 !important;                  /* 最前面に配置 */
+}
+
+
+/*----------------------------------------------
+  商品ページ背景とモバイル対応（背景画像を透明化）
+----------------------------------------------*/
+#tile-product-details {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg') !important; /* 背景画像はそのまま */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg') !important; /* 背景画像を保持 */
+        background-color: transparent !important;  /* 背景色を透明に設定 */
+    }
+}
+
+
+/*----------------------------------------------
+  その他のセクション設定
+----------------------------------------------*/
+.secure-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 900px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secure-logo {
+    max-width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    touch-action: none;
+    z-index: 1;
+}
+
+.category-title {
+    font-size: 24px;
+    color: #B01A13;
+    font-weight: bold;
+    margin: 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/*----------------------------------------------
+  グリッドカテゴリーのボタン部分 (.grid-category__title-inner) 
+  （提案されたスタイルを適用）
+----------------------------------------------*/
+.grid-category__title-inner {
+    background-color: white !important;       /* 背景色を白 */
+    color: #B01A13 !important;               /* テキスト色を赤 */
+    border: 1px solid #B01A13 !important;    /* 境界線を赤に */
+    font-size: 14px !important;              /* フォントサイズ */
+    padding: 10px 15px !important;           /* 内側余白 */
+    text-transform: uppercase !important;    /* テキストを大文字に */
+    font-weight: bold !important;            /* 太字 */
+    border-radius: 5px !important;           /* 角を丸める */
+    display: inline-flex !important;         /* インラインフレックスで配置 */
+    justify-content: center !important;      /* 水平方向の中央揃え */
+    align-items: center !important;          /* 垂直方向の中央揃え */
+    flex-wrap: nowrap !important;            /* 折り返しを無効化 */
+    gap: 10px !important;                    /* 子要素間の間隔 */
+    text-decoration: none !important;        /* リンクの下線を削除 */
+    transition: all 0.3s ease !important;    /* スムーズな変化効果 */
+    box-sizing: border-box !important;       /* ボックスモデルを設定 */
+}
+
+/* ホバー時のスタイル */
+.grid-category__title-inner:hover {
+    background-color: #8A0D0F !important;     /* 背景色を暗い赤に */
+    color: white !important;                 /* テキスト色を白 */
+    border: 1px solid #8A0D0F !important;    /* 境界線も暗い赤 */
+}
+
+/* クリック時のスタイル（:active） */
+.grid-category__title-inner:active {
+    background-color: white !important;      /* 背景色を白に戻す */
+    color: #B01A13 !important;               /* テキスト色を赤に */
+    border: 1px solid #B01A13 !important;    /* 境界線を赤に */
+}
+  /* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+
+
+
+/* 全体のスタイル */
+#tile-product-details {
+    position: relative; /* 要素の基準位置を指定 */
+    width: 100%; /* 横幅を全体に設定 */
+    min-height: 100vh; /* 高さを全画面に設定 */
+    overflow: hidden; /* はみ出す要素を隠す */
+    background-color: transparent; /* 背景色を透明に設定 */
+}
+
+/* モバイル用スタイル (背景画像を非表示にする) */
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: none !important; /* モバイルで背景画像を非表示 */
+        background-color: transparent !important; /* 背景色を透明に */
+    }
+}
+/* .secure-container そのものを上方向に引き上げる */
+.secure-container {
+  position: absolute
+  margin-top: -80px; /* 好きな分だけ引き上げる */
+
+  /* 下の要素と重なりたくないなら padding-bottomを足すなど */
+  /* z-index も必要なら加える */
+  z-index: 9999;
+}
+
+ 
+/*----------------------------------------------
+  グローバルのルート設定（変数）
+----------------------------------------------*/
+:root {
+  --background-color-h: 0;
+  --background-color-s: 0%;
+  --background-color-l: 100%; /* 明るい白 */
+  --background-color-a: 1;
+  --button-color-h: 0;
+  --button-color-s: 0%;
+  --button-color-l: 20%;
+  --button-color-b: .2;
+  --button-color-a: 1;
+  --link-color-h: 206;
+  --link-color-s: 76%;
+  --link-color-l: 43%;
+  --link-color-b: .435;
+  --link-color-a: 1;
+  --title-font-size: 48px;    /* タイトルサイズ */
+  --subtitle-font-size: 22px; /* サブタイトルサイズ */
+  --button-font-size: 16px;   /* ボタンのサイズ */
+}
+
+/*----------------------------------------------
+  リセットや全体的な調整
+----------------------------------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/*----------------------------------------------
+  ヘッダーの下に配置するセクション
+----------------------------------------------*/
+.secure-container {
+  /* ヘッダー直下に配置したい場合は、ヘッダータグの直後にHTMLを置き、
+     さらに余白をつけたい場合は margin-top を指定 */
+  margin-top: 20px; 
+  padding: 20px;
+  background: #fff; /* 必要なら背景色を指定 */
+}
+
+.secure-background {
+  text-align: center;
+  /* もし背景全体を画像で埋めたければ、background-imageなどを適用
+     例）background: url('任意の背景画像'); background-size: cover; 等 */
+}
+
+.secure-logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.description {
+  text-align: center;
+  margin: 0 auto 15px auto;
+  line-height: 1.5;
+  color: #333;
+}
+
+.category-title {
+  text-align: center;
+  font-size: var(--subtitle-font-size);
+  margin: 0 auto 20px auto;
+  color: #111;
+}
+
+/*----------------------------------------------
+  グリッドカテゴリーのボタン部分 (.grid-category__title-inner) 
+  （提案されたスタイルを適用）
+----------------------------------------------*/
+.grid-category__title-inner {
+  background-color: white !important;       /* 背景色を白 */
+  color: #B01A13 !important;               /* テキスト色を赤 */
+  border: 1px solid #B01A13 !important;    /* 境界線を赤に */
+  font-size: 14px !important;              /* フォントサイズ */
+  padding: 10px 15px !important;           /* 内側余白 */
+  text-transform: uppercase !important;    /* テキストを大文字に */
+  font-weight: bold !important;            /* 太字 */
+  border-radius: 5px !important;           /* 角を丸める */
+  display: inline-flex !important;         /* インラインフレックスで配置 */
+  justify-content: center !important;      /* 水平方向の中央揃え */
+  align-items: center !important;          /* 垂直方向の中央揃え */
+  flex-wrap: nowrap !important;            /* 折り返しを無効化 */
+  gap: 10px !important;                    /* 子要素間の間隔 */
+  text-decoration: none !important;        /* リンクの下線を削除 */
+  transition: all 0.3s ease !important;    /* スムーズな変化効果 */
+  box-sizing: border-box !important;       /* ボックスモデルを設定 */
+}
+
+/* ホバー時のスタイル */
+.grid-category__title-inner:hover {
+  background-color: #8A0D0F !important;     /* 背景色を暗い赤に */
+  color: white !important;                 /* テキスト色を白 */
+  border: 1px solid #8A0D0F !important;    /* 境界線も暗い赤 */
+}
+
+/* クリック時のスタイル（:active） */
+.grid-category__title-inner:active {
+  background-color: white !important;      /* 背景色を白に戻す */
+  color: #B01A13 !important;               /* テキスト色を赤に */
+  border: 1px solid #B01A13 !important;    /* 境界線を赤に */
+}
+  /* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの通常時のスタイル */
+header a, header .ins-link {
+    color: #FFD600 !important; /* 通常時のリンク色は黄色 */
+}
+
+/* ヘッダー内のリンクのホバー時のスタイル */
+header a:hover, header .ins-link:hover {
+    color: #FFFFFF !important; /* ホバー時のリンク色を白に変更 */
+    background-color: transparent !important; /* 背景色は透明のまま */
+}
+
+/* 赤背景でリンクの視認性を確保 */
+header a.red-background, header .ins-link.red-background {
+    color: #FFFFFF !important; /* 赤背景時のリンク色を白に設定 */
+}  /* 全体スタイル: ヘッダーやフッターを除外 */
+body, .ins-tile__wrap {
+    margin: 0; /* 外側余白をリセット */
+    padding: 0; /* 内側余白をリセット */
+    text-align: center; /* テキストを中央揃え */
+    overflow-x: hidden; /* 横スクロールを防止 */
+}
+
+/* shop-introduction のみ調整 */
+.shop-introduction {
+    margin: 20px auto; /* 上下に適度な余白 */
+    padding: 10px; /* 内側余白 */
+    text-align: center; /* テキスト中央揃え */
+    max-width: 800px; /* 最大幅を指定 */
+}
+
+/* shop-about のみ調整 */
+.shop-about {
+    margin: 30px auto; /* 上下の余白を広めに */
+    padding: 15px; /* 内側余白 */
+    line-height: 1.6; /* 行間を設定 */
+    max-width: 900px; /* 最大幅を指定 */
+    background-color: #f9f9f9; /* 背景色 */
+    border-radius: 10px; /* 角を丸くする */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を追加 */
+}
+
+/* shop-about 内の要素調整 */
+.shop-about h2 {
+    margin: 15px 0; /* 見出しに上下の余白 */
+    padding: 0; /* 内側余白なし */
+    font-size: 24px; /* フォントサイズ */
+    font-weight: bold; /* 太字 */
+    text-align: center; /* 中央揃え */
+}
+
+.shop-about p {
+    margin: 10px 0; /* 各段落の間隔 */
+    padding: 0; /* パディングを削除 */
+    line-height: 1.8; /* 行間を広げる */
+    font-size: 16px; /* 読みやすいフォントサイズ */
+}
+
+/* secure-container スタイル */
+.secure-container {
+    display: flex;
+    flex-direction: column; /* 縦方向に並べる */
+    justify-content: center; /* 垂直方向の中央揃え */
+    align-items: center; /* 水平方向の中央揃え */
+    text-align: center; /* テキストを中央揃え */
+    padding: 20px; /* コンテナの内側余白 */
+    margin: 0 auto; /* 水平中央揃え */
+    max-width: 900px; /* 最大幅 */
+    background-color: #ffffff; /* 白背景 */
+    border: 1px solid #ddd; /* 薄いボーダー */
+    border-radius: 8px; /* 角を丸くする */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影を設定 */
+    box-sizing: border-box; /* ボックスモデル設定 */
+}
+
+/* フッター、ヘッダーにはスタイル適用しない */
+header, footer {
+    all: unset; /* 既存のスタイルを無効化 */
+}
+
+/* モバイル対応 (幅768px以下) */
+@media screen and (max-width: 768px) {
+    .shop-introduction, .shop-about, .secure-container {
+        padding: 15px; /* 内側余白を縮小 */
+        margin: 10px auto; /* 外側余白を調整 */
+        max-width: 100%; /* 横幅をデバイス幅に合わせる */
+    }
+
+    .shop-about h2 {
+        font-size: 20px; /* 見出しの文字サイズを縮小 */
+    }
+
+    .shop-about p {
+        font-size: 14px; /* 段落の文字サイズを縮小 */
+    }
+}
+
+
+/* 背景全体 */
+.secure-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    height: 150px;
+    background-color: #f4f4f4; /* 背景色 */
+    border-radius: 15px; /* 角を丸める */
+    overflow: hidden; /* 内容のオーバーフローを非表示 */
+    margin-bottom: 20px; /* 背景下の余白 */
+}
+
+/* ロゴ画像 */
+.secure-logo {
+    max-width: 100%;
+    height: auto;
+    pointer-events: none; /* クリックや右クリックを無効化 */
+    user-select: none; /* 選択を無効化 */
+    -webkit-user-drag: none; /* ドラッグを無効化 */
+    -webkit-touch-callout: none; /* モバイル長押し無効化 */
+    touch-action: none; /* タッチ操作を無効化 */
+    z-index: 1;
+}
+
+/* 見出しのスタイル */
+.category-title {
+    font-size: 24px;
+    color: #B01A13;
+    font-weight: bold;
+    margin: 10px 0; /* 上下のマージン */
+    text-transform: uppercase; /* 大文字に変換 */
+    text-align: center;
+}
+
+
+/* tile-product-details に背景画像を設定 */
+#tile-product-details {
+    position: relative; /* 要素の基準位置を指定 */
+    width: 100%; /* 横幅を全体に設定 */
+    min-height: 100vh; /* 高さを全画面に設定 */
+    overflow: hidden; /* はみ出す要素を隠す */
+    background-color: transparent; /* 背景を透明に設定 */
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg'; /* 背景画像を設定 */
+    background-size: cover; /* 画像を全体にフィットさせる */
+    background-position: center center; /* 背景画像を中央に配置 */
+    background-repeat: no-repeat; /* 繰り返しなし */
+    background-attachment: fixed; /* 背景画像を固定（パララックス効果） */
+}
+
+/* モバイル用スタイル (幅768px以下の場合) */
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: none; /* 背景画像を非表示 */
+        background-color: transparent; /* 背景は透明を維持 */
+    }
+}
+
+
+/* 通常時のスタイル */
+.grid-category__title-inner {
+    background-color: white !important; /* 背景色を白に */
+    color: #B01A13 !important; /* テキスト色を赤に */
+    border: 1px solid #B01A13 !important; /* 境界線を赤に */
+    font-size: 14px !important; /* フォントサイズ */
+    padding: 10px 15px !important; /* 内側余白 */
+    text-transform: uppercase !important; /* テキストを大文字に */
+    font-weight: bold !important; /* 太字 */
+    border-radius: 5px !important; /* 角を丸める */
+    display: inline-flex !important; /* インラインフレックスで配置 */
+    justify-content: center !important; /* 水平方向の中央揃え */
+    align-items: center !important; /* 垂直方向の中央揃え */
+    flex-wrap: nowrap !important; /* 折り返しを無効化 */
+    gap: 10px !important; /* 子要素間の間隔 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    transition: all 0.3s ease !important; /* スムーズな変化効果 */
+    box-sizing: border-box !important; /* ボックスモデルを設定 */
+}
+
+/* ホバー時のスタイル */
+.grid-category__title-inner:hover {
+    background-color: #8A0D0F !important; /* 背景色を暗い赤に変更 */
+    color: white !important; /* テキスト色を白に */
+    border: 1px solid #8A0D0F !important; /* 境界線も暗い赤に */
+}
+
+/* クリック時のスタイル */
+.grid-category__title-inner:active {
+    background-color: white !important; /* 背景色を白に */
+    color: #B01A13 !important; /* テキスト色を赤に戻す */
+    border: 1px solid #B01A13 !important; /* 境界線を赤に維持 */
+}
+
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの色を黄色に設定 */
+header a, header .ins-link {
+    color: #FFD600 !important;  /* リンクの色を黄色に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 0 5px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  #tile-product-details {
+    position: relative; /* 親要素に相対配置 */
+}
+
+:root {
+    --container-width: 80%; /* 画面の80%に合わせる */
+}
+
+body {
+    position: relative; /* bodyに相対配置 */
+    margin: 0; /* マージンをリセット */
+}
+
+/* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの通常時のスタイル */
+header a, header .ins-link {
+    color: #FFD600 !important; /* 通常時のリンク色は黄色 */
+}
+
+/* ヘッダー内のリンクのホバー時のスタイル */
+header a:hover, header .ins-link:hover {
+    color: #FFFFFF !important; /* ホバー時のリンク色を白に変更 */
+    background-color: transparent !important; /* 背景色は透明のまま */
+}
+
+/* 赤背景でリンクの視認性を確保 */
+header a.red-background, header .ins-link.red-background {
+    color: #FFFFFF !important; /* 赤背景時のリンク色を白に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+ /* tile-product-details に背景画像を設定 */
+#tile-product-details {
+    position: relative; /* 要素の基準位置を指定 */
+    width: 100%; /* 横幅を全体に設定 */
+    min-height: 100vh; /* 高さを全画面に設定 */
+    overflow: hidden; /* はみ出す要素を隠す */
+    background-color: transparent; /* 背景を透明に設定 */
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg'; /* 背景画像を設定 */
+    background-size: cover; /* 画像を全体にフィットさせる */
+    background-position: center center; /* 背景画像を中央に配置 */
+    background-repeat: no-repeat; /* 繰り返しなし */
+    background-attachment: fixed; /* 背景画像を固定（パララックス効果） */
+}
+
+/* モバイル用スタイル (幅768px以下の場合) */
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background-image: none; /* 背景画像を非表示 */
+        background-color: transparent; /* 背景は透明を維持 */
+    } 
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 0 5px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  #tile-product-details {
+    position: relative; /* 親要素に相対配置 */
+}
+
+:root {
+    --container-width: 80%; /* 画面の80%に合わせる */
+}
+
+body {
+    position: relative; /* bodyに相対配置 */
+    margin: 0; /* マージンをリセット */
+}
+
+/* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの色を黄色に設定 */
+header a, header .ins-link {
+    color: #FFD600 !important;  /* リンクの色を黄色に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 2px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  /* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの色を黄色に設定 */
+header a, header .ins-link {
+    color: #FFD600 !important;  /* リンクの色を黄色に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 0 5px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  #tile-product-details {
+    position: relative; /* 親要素に相対配置 */
+}
+
+:root {
+    --container-width: 80%; /* 画面の80%に合わせる */
+}
+
+body {
+    position: relative; /* bodyに相対配置 */
+    margin: 0; /* マージンをリセット */
+}
+
+/* 基本のスタイル設定 */
+body, .ecwid-productBrowser-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: inherit !important; /* フォントファミリーは変更しない */
+    background-color: #ffffff !important; /* 白背景 */
+    color: #333333 !important; /* ダークグレーのテキスト */
+}
+
+/* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの色を黄色に設定 */
+header a, header .ins-link {
+    color: #FFD600 !important;  /* リンクの色を黄色に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 10px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  /* ルートの基本設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+
+/* ins-tile__link の背景を画像に変更 */
+.ins-tile__made-with-inner {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736046594/payment_ilxdzn.png') !important; /* 画像のURL */
+    background-size: contain !important;  /* 画像サイズを調整 */
+    background-repeat: no-repeat !important;  /* 繰り返し表示しない */
+    width: 250px !important;  /* 画像に合わせた幅を設定 */
+    height: 100px !important;  /* 高さを設定 */
+    display: inline-block !important; /* インラインブロックとして表示 */
+    text-decoration: none !important; /* テキストリンクの下線を消す */
+    color: transparent !important; /* テキスト色を透明に設定 */
+}
+
+
+/* ins-tile__link の背景を画像に変更 */
+.ins-tile__made-with-inner {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736046594/payment_ilxdzn.png') !important; /* 画像のURL */
+    background-size: contain !important;  /* 画像サイズを調整 */
+    background-repeat: no-repeat !important;  /* 繰り返し表示しない */
+    width: 250px !important;  /* 画像に合わせた幅を設定 */
+    height: 100px !important;  /* 高さを設定 */
+    display: inline-block !important; /* インラインブロックとして表示 */
+    text-decoration: none !important; /* テキストリンクの下線を消す */
+    color: transparent !important; /* テキスト色を透明に設定 */
+}
+  /* グローバルのルート設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+/* ヘッダー内のリンクの色を黄色に設定 */
+header a, header .ins-link {
+    color: #FFD600 !important;  /* リンクの色を黄色に設定 */
+}
+
+/* 商品カードのスタイル */
+.ecwid-productBrowser-product {
+    background-color: transparent !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px !important;
+    border: 2px solid #333333 !important;
+    margin-bottom: 20px !important;
+    padding: 10px !important;
+}
+
+/* 商品名と価格 */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important;
+    color: #333333 !important; /* 黒文字 */
+}
+
+.ecwid-productBrowser-price {
+    font-size: 18px !important;
+    color: #e53935 !important; /* 赤色 */
+}
+
+/* 商品画像のスタイル（エフェクトなし） */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important;
+}
+
+/* タイトルスタイル */
+.page-title__name {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important; /* 文字色を赤に設定 */
+    text-transform: uppercase !important; /* 文字を大文字に設定 */
+}
+
+/* リンクのスタイル */
+a, .ins-link {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease !important; /* スムーズな色変更 */
+}
+
+/* リンクのホバー時のスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* 赤色背景におけるリンクの視認性向上 */
+a.red-background, .ins-link.red-background {
+    color: #fff !important; /* 赤い背景の上では白文字 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* Add to Cart ボタンのスタイルを完全にカスタマイズ */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;  /* ボタンの背景色を赤に */
+    color: white !important;  /* 文字色を白に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を追加 */
+    font-size: 16px !important;  /* 文字サイズを16pxに */
+    padding: 12px 30px !important;  /* パディング調整 */
+    text-transform: uppercase !important;  /* 文字を大文字に */
+    font-weight: bold !important;  /* 文字を太字に */
+    outline: none !important;  /* ボタンのアウトラインを削除 */
+    border-radius: 5px !important;  /* 角を丸める（5px） */
+}
+
+/* ホバー時の効果 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;  /* 背景を白に */
+    color: #B01A13 !important;  /* 文字色を赤に */
+    border: 2px solid #B01A13 !important;  /* 赤の境界線を維持 */
+    transition: all 0.3s ease !important;  /* スムーズなホバー効果 */
+}
+
+/* クリック時の色変更 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;  /* クリック時に背景を少し暗く */
+    color: white !important;  /* 文字色は白のまま */
+}  /* 商品画像および商品タイトルリンクの色設定 */
+.grid-product__title a {
+    color: #666 !important;  /* 通常時のリンク色はグレー */
+    text-decoration: none !important;  /* 下線を削除 */
+}
+
+/* ホバー時のリンク色 */
+.grid-product__title a:hover {
+    color: #B01A13 !important; /* ホバー時は赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+/* リンクが青色になる問題を防ぐため、他のスタイルを上書き */
+.grid-product__title a:visited {
+    color: #666 !important;  /* 訪問後もグレー */
+}
+
+.grid-product__title a:active {
+    color: #B01A13 !important;  /* クリック時に赤色 */
+    background-color: transparent !important; /* 背景色は透明 */
+}
+
+
+/* ボタン内のテキストを非表示にする */
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;  /* ボタンのテキストを非表示 */
+}
+
+/* ボタン内のアイコンを中央に配置 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    display: flex !important;
+    justify-content: center !important;  /* 中央に配置 */
+    align-items: center !important;  /* アイコンも中央に配置 */
+}
+
+/* ボタンに表示されるテキスト */
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;  /* ボタンに表示するテキスト */
+    font-size: 16px !important;  /* フォントサイズ調整 */
+}
+
+/* アイコンとリンクサイズの調整 */
+.ec-likely__widget {
+    display: inline-block !important; /* アイコンをインラインブロックとして表示 */
+    margin: 10px !important; /* アイコン間隔 */
+    padding: 5px !important; /* アイコン内の余白 */
+    text-decoration: none !important; /* リンクの下線を削除 */
+    width: 30px !important; /* リンクの幅をアイコンに合わせる */
+    height: 30px !important; /* リンクの高さをアイコンに合わせる */
+    background-color: transparent !important; /* リンクの背景を透明にする */
+}
+
+/* アイコン画像の強制設定 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+}
+
+/* アイコンのホバー時の拡大効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* 拡大 */
+    transition: transform 0.3s ease !important; /* スムーズな拡大 */
+}
+
+/* ボタンテキストを非表示 */
+.ec-likely__button {
+    display: none !important; /* ボタンテキストを非表示 */
+}
+
+/* アイコン画像の強制設定 (SVG アイコンを完全に無効化) */
+.ec-likely__widget .ec-likely__icon svg {
+    display: none !important; /* SVG アイコンを非表示 */
+}  /* ルートの基本設定 */
+:root {
+    --background-color-h: 0;
+    --background-color-s: 0%;
+    --background-color-l: 100%; /* 明るい白 */
+    --background-color-a: 1;
+    --button-color-h: 0;
+    --button-color-s: 0%;
+    --button-color-l: 20%;
+    --button-color-b: .2;
+    --button-color-a: 1;
+    --link-color-h: 206;
+    --link-color-s: 76%;
+    --link-color-l: 43%;
+    --link-color-b: .435;
+    --link-color-a: 1;
+    --title-font-size: 48px; /* タイトルサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルサイズ */
+    --button-font-size: 16px; /* ボタンのサイズ */
+}
+
+
+/* ins-tile__link の背景を画像に変更 */
+.ins-tile__made-with-inner {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736046594/payment_ilxdzn.png') !important; /* 画像のURL */
+    background-size: contain !important;  /* 画像サイズを調整 */
+    background-repeat: no-repeat !important;  /* 繰り返し表示しない */
+    width: 250px !important;  /* 画像に合わせた幅を設定 */
+    height: 100px !important;  /* 高さを設定 */
+    display: inline-block !important; /* インラインブロックとして表示 */
+    text-decoration: none !important; /* テキストリンクの下線を消す */
+    color: transparent !important; /* テキスト色を透明に設定 */
+}
+
+
+
+/*----------------------------------------------
+  div.ec-wrapper の背景を完全に透明に設定
+----------------------------------------------*/
+/*----------------------------------------------
+  body や html の背景を透明に設定
+----------------------------------------------*/
+html, body {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+}
+
+/*----------------------------------------------
+  ec-wrapper の背景を透明に設定
+----------------------------------------------*/
+.ec-wrapper {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+}
+
+/*----------------------------------------------
+  ecwid_body の背景を透明に設定
+----------------------------------------------*/
+body#ecwid_body {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+
+/*----------------------------------------------
+  .ecwid-productBrowser-head の背景を透明に設定
+----------------------------------------------*/
+.ecwid-productBrowser-head {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+    background: transparent !important;        /* 背景を透明に強制設定 */
+}
+
+/*----------------------------------------------
+  .ec-store__content-wrapper の背景を透明に設定
+----------------------------------------------*/
+.ec-store__content-wrapper {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+    background: transparent !important;        /* 背景を透明に強制設定 */
+}
+
+/*----------------------------------------------
+  .product-details__top の背景を透明に設定
+----------------------------------------------*/
+.product-details__top {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+    background: transparent !important;        /* 背景を透明に強制設定 */
+}
+
+
+/*----------------------------------------------
+  body と .ecwid-productBrowser-wrapper の背景を透明に設定
+----------------------------------------------*/
+body, .ecwid-productBrowser-wrapper {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+    background-image: none !important;         /* 背景画像を削除 */
+}
+
+/*----------------------------------------------
+  html と body の背景色を透明に設定
+----------------------------------------------*/
+html, body {
+    background-color: transparent !important;  /* 背景色を透明に設定 */
+}
+
+/*----------------------------------------------
+  CSS変数を修正して背景色を透明に
+----------------------------------------------*/
+:root {
+    --global-background-color-h: 0;
+    --global-background-color-s: 0%;
+    --global-background-color-l: 100%;  /* 背景色を透明に */
+    --global-background-color-a: 0;    /* 透明度を0に設定 */
+}
