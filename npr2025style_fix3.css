@@ -1,0 +1,172 @@
+/*----------------------------------------------
+  ヘッダー固定（スクロール時）設定
+----------------------------------------------*/
+/* ヘッダーを画面の上部に固定 */
+header {
+    position: fixed !important; /* ヘッダーを固定 */
+    top: 0 !important; /* 画面の上部に配置 */
+    left: 0 !important; /* 左端に配置 */
+    right: 0 !important; /* 右端に配置 */
+    z-index: 9999 !important; /* 他の要素より前面に表示 */
+    background-color: #fff !important; /* 背景色を白に設定 */
+    width: 100% !important; /* 幅を100%に設定 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important; /* ヘッダーに影を追加 */
+}
+
+/*----------------------------------------------
+  エクウィッド商品ブラウザ設定
+----------------------------------------------*/
+/* 商品ブラウザの背景設定 */
+.ecwid-productBrowser-wrapper {
+    background-image: none !important; /* 背景画像なし */
+    background-color: transparent !important; /* 背景色を透明に */
+    background-size: auto !important; /* 背景画像のサイズを自動調整 */
+    background-position: initial !important; /* 背景画像の位置を初期設定 */
+    background-repeat: no-repeat !important; /* 背景画像の繰り返しなし */
+    border: none !important; /* 枠線なし */
+}
+
+/*----------------------------------------------
+  ルート変数（カスタムカラー設定）
+----------------------------------------------*/
+/* 色やフォントサイズなどをカスタマイズするための変数設定 */
+:root {
+    --background-color-h: 0; /* 背景色の色相 */
+    --background-color-s: 0%; /* 背景色の彩度 */
+    --background-color-l: 100%; /* 背景色の明度 */
+    --background-color-a: 1; /* 背景色の透明度 */
+    --button-color-h: 0; /* ボタンの色相 */
+    --button-color-s: 0%; /* ボタンの彩度 */
+    --button-color-l: 20%; /* ボタンの明度 */
+    --button-color-b: .2; /* ボタンの明度 */
+    --button-color-a: 1; /* ボタンの透明度 */
+    --link-color-h: 206; /* リンクの色相 */
+    --link-color-s: 76%; /* リンクの彩度 */
+    --link-color-l: 43%; /* リンクの明度 */
+    --link-color-b: .435; /* リンクの明度 */
+    --link-color-a: 1; /* リンクの透明度 */
+    --title-font-size: 48px; /* タイトルのフォントサイズ */
+    --subtitle-font-size: 22px; /* サブタイトルのフォントサイズ */
+    --button-font-size: 16px; /* ボタンのフォントサイズ */
+}
+
+/*----------------------------------------------
+  商品カードのデザイン
+----------------------------------------------*/
+/* 商品カードに関するデザイン設定 */
+.ecwid-productBrowser-product {
+    background-color: transparent !important; /* 商品カードの背景を透明に設定 */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2) !important; /* 商品カードに影を追加 */
+    border-radius: 10px !important; /* 商品カードの角を丸める */
+    border: 2px solid #333333 !important; /* 枠線を指定 */
+    margin-bottom: 20px !important; /* 下の余白を追加 */
+    padding: 10px !important; /* 内側の余白を追加 */
+}
+
+/* 商品名のスタイル */
+.ecwid-productBrowser-productName {
+    font-size: 20px !important; /* 商品名のフォントサイズ */
+    color: #333333 !important; /* 商品名の文字色 */
+}
+
+/* 商品価格のスタイル */
+.ecwid-productBrowser-price {
+    font-size: 18px !important; /* 価格のフォントサイズ */
+    color: #e53935 !important; /* 価格の文字色 */
+}
+
+/* 商品画像のスタイル */
+.ecwid-productBrowser-image img {
+    border-radius: 8px !important; /* 商品画像の角を丸める */
+}
+
+/*----------------------------------------------
+  カートボタンのスタイル
+----------------------------------------------*/
+/* カートボタンのスタイル設定 */
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important; /* カートボタンの背景色 */
+    color: white !important; /* ボタンの文字色 */
+    border: 2px solid #B01A13 !important; /* ボタンの枠線 */
+    font-size: 16px !important; /* ボタンのフォントサイズ */
+    padding: 12px 30px !important; /* ボタンの内側余白 */
+    text-transform: uppercase !important; /* テキストを大文字に変換 */
+    font-weight: bold !important; /* フォントを太字に */
+    outline: none !important; /* ボタンのアウトラインを消す */
+    border-radius: 5px !important; /* ボタンの角を丸める */
+}
+
+/* カートボタンにホバーしたときのスタイル */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important; /* ホバー時にボタン背景を白に */
+    color: #B01A13 !important; /* 文字色を赤に変更 */
+    border: 2px solid #B01A13 !important; /* 枠線を赤に変更 */
+    transition: all 0.3s ease !important; /* スムーズなホバー効果 */
+}
+
+/* カートボタンがクリックされたときのスタイル */
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important; /* クリック時に背景色を暗い赤に */
+    color: white !important; /* 文字色を白に */
+}
+
+/*----------------------------------------------
+  リンクのスタイル
+----------------------------------------------*/
+/* 通常のリンクのスタイル */
+a, .ins-link {
+    color: #666 !important; /* リンクの文字色 */
+    text-decoration: none !important; /* 下線なし */
+    cursor: pointer !important; /* ポインターカーソル */
+    transition: color 0.3s ease !important; /* スムーズな色変化 */
+}
+
+/* ホバー時のリンクのスタイル */
+a:hover, .ins-link:hover {
+    color: #B01A13 !important; /* ホバー時に赤色に */
+    background-color: transparent !important; /* 背景色を透明に */
+}
+
+/* リンクが訪問済みのときのスタイル */
+a:visited {
+    color: #666 !important; /* 訪問済みリンクの文字色 */
+}
+
+/* アクティブなリンクのスタイル */
+a:active {
+    color: #B01A13 !important; /* クリック時に赤色に */
+    background-color: transparent !important; /* 背景色を透明に */
+}
+
+/*----------------------------------------------
+  ソーシャルアイコンのスタイル
+----------------------------------------------*/
+/* ソーシャルアイコンの基本スタイル */
+.ec-likely__widget {
+    display: inline-block !important; /* インライン表示 */
+    margin: 10px !important; /* アイコン間の余白 */
+    padding: 5px !important; /* 内側の余白 */
+    text-decoration: none !important; /* 下線なし */
+    width: 30px !important; /* アイコンの幅 */
+    height: 30px !important; /* アイコンの高さ */
+    background-color: transparent !important; /* 背景を透明に */
+}
+
+/* 各ソーシャルアイコンの画像 */
+.ec-likely__widget--facebook .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important; /* Facebookアイコン */
+}
+
+.ec-likely__widget--twitter .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important; /* Twitterアイコン */
+}
+
+.ec-likely__widget--pinterest .ec-likely__icon {
+    background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important; /* Pinterestアイコン */
+}
+
+/* ソーシャルアイコンのホバー効果 */
+.ec-likely__widget:hover .ec-likely__icon {
+    transform: scale(1.1) !important; /* ホバー時にアイコンを少し拡大 */
+    transition: transform 0.3s ease !important; /* スムーズに変化 */
+}
