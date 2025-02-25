@@ -1,0 +1,467 @@
+/************************************
+ * 1) ブラウザ標準の余白リセット
+ ************************************/
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/************************************
+ * 2) body 全体設定
+ ************************************/
+body {
+    background-color: transparent; /* 背景を透明化 */
+    color: #333333;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* 横スクロール防止 */
+}
+
+/************************************
+ * 3) ヘッダーの配置・スタイル
+ ************************************/
+header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 10000 !important;
+    width: 100%;
+    background-color: #B01A13 !important; /* 赤系背景色 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: top 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center;
+}
+
+header.scrolled {
+    top: -100px !important; /* スクロール時に隠れる */
+}
+
+header.visible {
+    top: 0 !important; /* 再表示される */
+}
+
+/* ヘッダー内のリンク */
+header a, 
+header .ins-link {
+    color: #FFD600 !important; /* 通常リンク色: 黄色 */
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+}
+
+header a:hover, 
+header .ins-link:hover {
+    color: #FFFFFF !important; /* ホバー時リンク色: 白 */
+    background-color: transparent !important;
+}
+
+/************************************
+ * コメント: カテゴリボタンスタイル
+ ************************************/
+.ecwid .grid-category__title-inner {
+    background-color: white !important; /* 白背景 */
+    color: #B01A13 !important; /* 赤色テキスト */
+    border: 1px solid #B01A13 !important;
+    font-size: 14px !important;
+    padding: 10px 15px !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    border-radius: 5px !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+}
+
+.ecwid .grid-category__title-inner:hover {
+    background-color: #8A0D0F !important; /* ホバー時の背景色: 濃い赤 */
+    color: white !important; /* ホバー時のテキスト色: 白 */
+    border: 1px solid #8A0D0F !important;
+}
+
+.ecwid .grid-category__title-inner:active {
+    background-color: white !important; /* アクティブ時の背景色: 白 */
+    color: #B01A13 !important; /* アクティブ時のテキスト色: 赤 */
+    border: 1px solid #B01A13 !important;
+}
+
+/* ▼ ボタン全体に適用するスタイル */
+.form-control__button {
+  background-color: white !important;
+  border: 1px solid #B01A13 !important;
+  border-radius: 5px !important;
+  display: inline-flex !important;     /* アイコンやテキストを横並びで中央寄せ */
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 10px !important;               /* ローダーとテキストの隙間 */
+  padding: 10px 15px !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;   /* 不要なら削除してもOK */
+}
+
+/* ▼ ボタン内のテキストのみ */
+.form-control__button-text {
+  font-size: 14px !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  color: #B01A13 !important;          /* 通常時の文字色 */
+}
+
+/* ▼ ホバー時（背景色や枠線、テキスト色の変更） */
+.form-control__button:hover {
+  background-color: #8A0D0F !important; 
+  border-color: #8A0D0F !important;
+}
+.form-control__button:hover .form-control__button-text {
+  color: #ffffff !important;          /* ホバー時に文字を白に */
+}
+
+/* ▼ クリック（押下）時 */
+.form-control__button:active {
+  background-color: white !important; 
+  border-color: #B01A13 !important;
+}
+.form-control__button:active .form-control__button-text {
+  color: #B01A13 !important;
+}
+
+/************************************
+ * コメント: tile-product-details に背景画像を設定
+ ************************************
+#tile-product-details {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg') no-repeat center center / cover fixed; /* 背景画像を設定 */
+}
+
+#tile-product-details:hover {
+    /* 何も変更せず、元の挙動を維持 */
+}
+
+#tile-product-details * {
+    background-color: transparent; /* 子要素の背景色を透明に */
+    background-image: none; /* 子要素の背景画像を削除 */
+    color: inherit; /* テキストカラーを継承 */
+    visibility: inherit; /* 子要素の表示状態を変更しない */
+    pointer-events: auto; /* 子要素の操作を有効にする */
+}
+
+@media screen and (max-width: 768px) {
+    #tile-product-details {
+        background: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736163251/DC_bg_xnxww4.jpg') no-repeat center center / cover scroll; /* モバイルでスクロール挙動に変更 */
+    }
+}
+*/
+
+/************************************
+ * コメント: Product Description の背景を削除
+ ************************************
+.product-details__product-description {
+    background: none !important; /* 背景色や背景画像を完全に削除 */
+    background-image: none !important; /* 背景画像を削除 */
+    border: none !important; /* 枠線を削除（必要に応じて） */
+    box-shadow: none !important; /* 影も削除 */
+    padding: 0 !important; /* 背景の見た目に影響する余白があれば削除 */
+}
+
+.product-details-module__content {
+    background: none !important;
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+*/
+
+/************************************
+ * 6) secure-container のスタイル
+ ************************************/
+.secure-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 900px;
+    background-color: #ffffff; /* 白背景 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secure-logo {
+    max-width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    touch-action: none;
+    z-index: 1;
+}
+ /************************************
+ * 商品タイトルのスタイル（競合解消版）
+ ************************************/
+.ec-header-h3 {
+    all: unset !important; /* すべてのスタイルをリセット */
+}
+
+.product-details__product-title {
+    color: #B01A13 !important;
+    text-transform: uppercase !important;
+    text-align: left !important;
+    margin: 20px 0 !important;
+}
+
+
+/************************************
+ * 6) ソーシャルアイコンのスタイル
+ ************************************/
+.ec-likely__widget {
+  display: inline-block !important;
+  margin: 10px !important;
+  padding: 5px !important;
+  text-decoration: none !important;
+  width: 30px !important;
+  height: 30px !important;
+  background-color: transparent !important;
+}
+.ec-likely__widget--facebook .ec-likely__icon {
+  background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/facebook_r_jtml2s.png') !important;
+  width: 30px !important;
+  height: 30px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+.ec-likely__widget--twitter .ec-likely__icon {
+  background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005019/x_r_xj3f0o.png') !important;
+  width: 30px !important;
+  height: 30px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+.ec-likely__widget--pinterest .ec-likely__icon {
+  background-image: url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736005018/pinterest_r_onoh4a.png') !important;
+  width: 30px !important;
+  height: 30px !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+.ec-likely__widget:hover .ec-likely__icon {
+  transform: scale(1.2) !important;
+  transition: transform 0.5s ease !important;
+}
+.ec-likely__button {
+  display: none !important;
+}
+.ec-likely__widget .ec-likely__icon svg {
+  display: none !important;
+}
+
+
+/************************************
+ * 7) Add to Cart (Ecwid想定)
+ ************************************/
+.details-product-purchase__add-to-bag .form-control__button--icon-center {
+    background-color: #B01A13 !important;
+    color: white !important;
+    border: 1px solid #B01A13 !important;
+    font-size: 16px !important;
+    padding: 12px 30px !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    outline: none !important;
+    border-radius: 5px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer;
+    transition: all 0.3s ease !important;
+}
+
+.details-product-purchase__add-to-bag .form-control__button--icon-center:hover {
+    background-color: white !important;
+    color: #B01A13 !important;
+    border: 1px solid #B01A13 !important;
+}
+
+.details-product-purchase__add-to-bag .form-control__button--icon-center:active {
+    background-color: #8A0D0F !important;
+    color: white !important;
+}
+
+.details-product-purchase__add-to-bag .form-control__button--icon-center span {
+    display: none !important;
+}
+
+.details-product-purchase__add-to-bag .form-control__button--icon-center::before {
+    content: 'ADD TO CART' !important;
+    font-size: 16px !important;
+}
+
+/************************************
+ * SVGアイコンの色変更のみ（レイアウト非変更）
+ ************************************/
+.svg-icon svg path {
+    fill: #B01A13; /* 塗りつぶし色 (赤色) */
+    fill-rule: evenodd; /* SVGの描画ルール */
+}
+ /************************************
+ * ECリンクのスタイル（色変更）
+ ************************************/
+.ec-link {
+    color: #B01A13; /* 赤系のテキスト色 */
+    text-decoration: none; /* 下線を削除 */
+    transition: color 0.3s ease; /* 色変更時のアニメーション */
+}
+
+.ec-link:hover {
+    color: #8A0D0F; /* ホバー時の濃い赤色 */
+    text-decoration: underline; /* ホバー時に下線を表示 */
+}
+
+.ec-link:active {
+    color: #8A0D0F; /* アクティブ時の濃い赤色 */
+}
+
+/************************************
+ * 9) ヘッダー以外のリンクスタイル
+ ************************************/
+body a:not(footer a):not(header a), 
+.ins-link:not(footer .ins-link):not(header .ins-link) {
+    color: #B01A13 !important; /* 通常リンク色: 赤系 */
+    text-decoration: none !important; /* 下線を除去 */
+    transition: color 0.3s ease !important; /* 色変更時のアニメーション */
+}
+
+body a:not(footer a):not(header a):hover,
+.ins-link:not(footer .ins-link):not(header .ins-link):hover {
+    color: #8A0D0F !important; /* ホバー時リンク色: 濃い赤 */
+    text-decoration: none !important; /* ホバー時にも下線を表示しない */
+}
+
+//************************************
+ * 10) フッターのスタイル
+ ************************************/
+footer.ins-tile--footer {
+    position: relative;
+    padding: 10px 0 10px; /* 上下の余白を調整 */
+    background-color: #1A1C20; /* 背景色 */
+    text-align: center;
+    color: #ffffff; /* テキスト色を白に */
+}
+/* 支払い方法アイコンを並べる疑似要素 */
+footer.ins-tile--footer::before {
+    content: '';
+    display: grid; /* グリッドレイアウト */
+    grid-template-columns: repeat(8, 1fr); /* 通常は8列グリッド */
+    gap: 0; /* アイコン間のスペースを詰める */
+    justify-content: center; /* グリッド全体を中央揃え */
+    align-items: center; /* 縦方向を中央揃え */
+    width: 100%; /* 横幅を全幅に設定 */
+    max-width: 450px; /* 最大幅を縮小 */
+    height: 23px; /* アイコンの高さを設定 */
+    margin: 20px auto; /* 上下余白を調整 */
+    background-image: 
+        url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736503608/visa_xerigg.png'),
+        url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736503594/mastercard_up41x9.png'),
+        url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736503590/jcb_ekx0jf.png'),
+        url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736503585/discover_kvbs5p.png'),
+        url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736505055/unionpay_nrmgjg.png'),
+        url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736503599/paypal_eauesj.png'),
+        url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736504566/plisio_m9ion0.png'),
+        url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736504561/crypto_gjpofy.png');
+    background-repeat: no-repeat;
+    background-position: 
+        0% center, 14.2857% center, 28.5714% center, 42.8571% center, 
+        57.1429% center, 71.4286% center, 85.7143% center, 100% center; /* 左右端にぴったり配置 */
+    background-size: 
+        auto 120%, /* Visa */
+        auto 120%, /* MasterCard */
+        auto 120%, /* JCB */
+        auto 120%, /* Discover */
+        auto 100%, /* UnionPay (基準サイズ) */
+        auto 100%, /* PayPal (やや大きめ) */
+        auto 100%, /* Plisio (やや大きめ) */
+        auto 120%; /* Crypto */
+}
+
+/* レスポンシブ対応（スマートフォン向け） */
+@media screen and (max-width: 400px) {
+    footer.ins-tile--footer::before {
+        display: block !important; /* フローに従わせる */
+        width: 80% !important; /* 親要素に対する幅80%を強制適用 */
+        height: 20px !important; /* 高さを固定調整（必要に応じて変更） */
+        margin: 10px auto !important; /* 上下余白と左右中央揃え */
+        padding: 10px !important; /* 内側の余白を設定 */
+        box-sizing: border-box !important; /* パディングを幅に含める */
+        background-image: 
+            url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736503608/visa_xerigg.png'),
+            url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736503594/mastercard_up41x9.png'),
+            url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736503590/jcb_ekx0jf.png'),
+            url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736503585/discover_kvbs5p.png'),
+            url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736505055/unionpay_nrmgjg.png'),
+            url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736503599/paypal_eauesj.png'),
+            url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736504566/plisio_m9ion0.png'),
+            url('https://res.cloudinary.com/drrtk7ws6/image/upload/v1736504561/crypto_gjpofy.png');
+        background-repeat: no-repeat !important;
+        background-position: 
+            left top, /* Visa */
+            center top, /* MasterCard */
+            right top -10px, /* JCB */
+            left center, /* Discover */
+            center center, /* UnionPay */
+            right center -10px, /* PayPal */
+            left bottom, /* Plisio */
+            right bottom -10px; /* Crypto */
+        background-size: 
+            auto 70% !important, /* Visa */
+            auto 70% !important, /* MasterCard */
+            auto 70% !important, /* JCB */
+            auto 70% !important, /* Discover */
+            auto 60% !important, /* UnionPay */
+            auto 60% !important, /* PayPal */
+            auto 60% !important, /* Plisio */
+            auto 70% !important; /* Crypto */
+    }
+}
+/************************************
+ * 11) ヘッダーの高さ調整（コンテンツ間隔）
+ ************************************/
+
+/* デスクトップ用 */
+body {
+    padding-top: 70px; /* ヘッダー高さ（デスクトップ） */
+}
+
+/* タブレット用 */
+@media screen and (max-width: 1024px) {
+    body {
+        padding-top: 60px; /* ヘッダー高さ（タブレット） */
+    }
+}
+
+/* モバイル用 */
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 60px; /* ヘッダー高さ（モバイル） */
+    }
+}
+
+/* 小型モバイル用 */
+@media screen and (max-width: 480px) {
+    body {
+        padding-top: 60px; /* ヘッダー高さ（小型モバイル） */
+    }
+}
