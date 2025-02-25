@@ -1,0 +1,148 @@
+@media (max-width: 768px) {
+  /* カテゴリー数が 3 以下なら2列、それ以上なら3列 */
+  .ec-size .ec-store .grid__categories--advanced[data-items] {
+    display: grid;
+    grid-gap: 10px;
+    justify-content: center;
+  }
+
+  /* 3列レイアウト: アイテム数が 4 以上の場合 */
+  .ec-size .ec-store .grid__categories--advanced[data-items="4"],
+  .ec-size .ec-store .grid__categories--advanced[data-items="5"],
+  .ec-size .ec-store .grid__categories--advanced[data-items="6"],
+  .ec-size .ec-store .grid__categories--advanced[data-items="7"],
+  .ec-size .ec-store .grid__categories--advanced[data-items="8"] {
+    grid-template-columns: repeat(3, 1fr); /* 3列配置 */
+  }
+
+  /* 2列レイアウト: アイテム数が 3 以下の場合 */
+  .ec-size .ec-store .grid__categories--advanced[data-items="1"],
+  .ec-size .ec-store .grid__categories--advanced[data-items="2"],
+  .ec-size .ec-store .grid__categories--advanced[data-items="3"] {
+    grid-template-columns: repeat(2, 1fr); /* 2列配置 */
+  }
+
+  /* グリッド内のカテゴリアイテムのサイズを均等に調整 */
+  .ec-size .ec-store .grid-category {
+    width: 100% !important; /* Gridにフィット */
+    position: relative !important;
+    aspect-ratio: 1 / 1; /* 正方形を維持 */
+  }
+
+  /* テキストを非表示 */
+  .ec-size .ec-store .grid-category__shadow-inner {
+    display: none !important;
+  }
+
+  /* 画像を非表示にし、擬似要素で画像を差し替え */
+  .grid-category__image[data-category-id] {
+    position: relative; /* 擬似要素を重ねるために必要 */
+    width: 100%;
+    height: 100%;
+  }
+
+  /* すべてのカテゴリの元画像を非表示（透明化） */
+  .grid-category__image[data-category-id] .grid-category__picture-img {
+    opacity: 0;
+  }
+
+  /* 各カテゴリIDごとに異なるCloudinary画像を設定 */
+  .grid-category__image[data-category-id="175802345"]::before {
+    background-image: url("https://res.cloudinary.com/drrtk7ws6/image/upload/v1740496818/cap-catmb_crok4d.png");
+  }
+  .grid-category__image[data-category-id="177478751"]::before {
+    background-image: url("https://res.cloudinary.com/drrtk7ws6/image/upload/v1740496818/t-shirt-catmb_kvw6ac.png");
+  }
+  .grid-category__image[data-category-id="177531002"]::before {
+    background-image: url("https://res.cloudinary.com/drrtk7ws6/image/upload/v1740496818/hood-and-crewcatmb_msu0zg.png");
+  }
+  .grid-category__image[data-category-id="177557006"]::before {
+    background-image: url("https://res.cloudinary.com/drrtk7ws6/image/upload/v1740496818/sweatshirt-catmb_pwkvoq.png");
+  }
+  .grid-category__image[data-category-id="177557007"]::before {
+    background-image: url("https://res.cloudinary.com/drrtk7ws6/image/upload/v1740496818/hoodie-catmb_kumsdx.png");
+  }
+  .grid-category__image[data-category-id="177530753"]::before {
+    background-image: url("https://res.cloudinary.com/drrtk7ws6/image/upload/v1740496817/footwear-catmb_toogya.png");
+  }
+  .grid-category__image[data-category-id="177531003"]::before {
+    background-image: url("https://res.cloudinary.com/drrtk7ws6/image/upload/v1740496817/backpack-catmb_s3sjtj.png");
+  }
+  .grid-category__image[data-category-id="177557256"]::before {
+    background-image: url("https://res.cloudinary.com/drrtk7ws6/image/upload/v1740496817/accessories-catmb_cyavnm.png");
+  }
+
+  /* 擬似要素の共通スタイル（グリッドにフィットするサイズへ） */
+  .grid-category__image[data-category-id]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+  }
+}
+
+:root {
+  --global-tile-max-width: 1440;
+}
+
+/* #ecwid-products の余白調整（負のマージン解除後、-50pxを適用） */
+html body #tile-product-details #ecwid-products.ecwid {
+  margin-top: -50px !important;
+}
+
+/* 関連コンテナはクリッピングしない */
+.ins-tile__wrap,
+.ec-grid,
+.grid__description,
+.grid__description-container {
+  overflow: visible !important;
+}
+
+body::before {
+content: "";
+position: fixed;
+top: 0; left: 0; right: 0; bottom: 0;
+background: url("https://res.cloudinary.com/drrtk7ws6/image/upload/v1740455151/transc_b4w7vm.png")
+repeat center center;
+opacity: 0.1;
+pointer-events: none; /* ページ操作をブロックしない */
+z-index: 9999;
+}
+
+/* ▼ 画像のドラッグ抑止 (CSS) */
+.grid__description-img {
+-webkit-user-drag: none;
+user-drag: none;
+}
+
+/* モバイル用調整 */
+@media (max-width: 768px) {
+  .grid__description-container {
+    margin-top: 0;
+  }
+}
+
+/* 背景色の設定 */
+.ins-tiles,
+.product-details-module__btn-more {
+  background-color: #f3f3f3 !important;
+}
+
+//* Swatch Value の調整 */
+.InApp_swatch_value,
+.InApp_swatch_value span {
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+  padding: 2px 4px !important;
+}
+
+/* Swatch Value を非表示 */
+.product-details-module__content .InApp_swatch_value {
+  display: none !important;
+}
