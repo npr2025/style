@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Custom CSS Integrated File
+   ========================================================================== */
+
+/* ■ 1. 画像中央配置対策
+   親要素(p)の text-align: center; でも効かない場合、画像がブロック要素になっている可能性があるため、
+   以下で display:block と margin: 0 auto; を指定して中央寄せにします。
+-------------------------------------------------------------------------- */
+.grid__description-img {
+    display: block;
+    margin: 0 auto;
+    /* ドラッグ禁止は既存のルールで設定 */
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+/* ■ 2. Pinterestボタン（左寄せ用）の色指定 */
+.cstmz-pinterest-button.cstmz-pinterest-button---left-desc {
+  color: #ffffff !important;
+}
+
+/* ■ 3. サムネイル画像のカスタムアウトライン・ボーダー・シャドウ設定 */
+
+/* (1) サムネイル画像そのもののデフォルトアウトライン・ボーダー・シャドウをすべてリセット */
+.ec-size.ec-size--s .ec-store .details-gallery__thumb-img {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+/* (2) 全サムネイル画像に対して、カスタムの ::after 擬似要素を定義 */
+.ec-size.ec-size--s .ec-store .details-gallery__thumb-img::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 5px !important;
+  /* 初期状態は非表示（アウトラインなし） */
+  opacity: 0 !important;
+  transition: opacity 0.15s !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+  box-shadow: inset 0 0 0 1px #4b4b4b !important;
+}
+
+/* (3) 選択時・クリックやフォーカス時に、カスタムのアウトラインを表示 */
+.ec-size.ec-size--s .ec-store .details-gallery__thumb--active .details-gallery__thumb-img::after,
+.ec-size.ec-size--s .ec-store .details-gallery__thumb-img:active::after,
+.ec-size.ec-size--s .ec-store .details-gallery__thumb-img:focus::after {
+  opacity: 1 !important;
+  box-shadow: inset 0 0 0 1px #323232 !important;
+  border-radius: 5px !important;
+}
