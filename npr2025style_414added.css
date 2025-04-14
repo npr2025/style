@@ -6,7 +6,7 @@
    親要素(p)の text-align: center; でも効かない場合、画像がブロック要素になっている可能性があるため、
    以下で display:block と margin: 0 auto; を指定して中央寄せにします。
 -------------------------------------------------------------------------- */
-.grid__description-img {
+.ec-store .grid__description .grid__description-inner p > img.grid__description-img {
     display: block !important;
     margin: 0 auto !important;
 }
