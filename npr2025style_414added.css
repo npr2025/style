@@ -2,8 +2,11 @@
    Custom CSS Integrated File
    ========================================================================== */
 
-!important を追加 */
-.ec-store .grid__description .grid__description-inner p > img.grid__description-img {
+/* ■ 1. 画像中央配置対策
+   親要素(p)の text-align: center; でも効かない場合、画像がブロック要素になっている可能性があるため、
+   以下で display:block と margin: 0 auto; を指定して中央寄せにします。
+-------------------------------------------------------------------------- */
+.grid__description-img {
     display: block !important;
     margin: 0 auto !important;
 }
