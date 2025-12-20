@@ -1,0 +1,282 @@
+/* =========================================================
+   2025npr.css (Nipponeer / TDCS landing)
+   - Single file, cache-friendly, no framework
+   - Fixes: unclosed @media, SoundBetter badge sizing/position, mobile layout
+   ========================================================= */
+
+:root{
+  --brand-accent: 255 140 0; /* underline accent (orange) */
+  --glass-bg: rgba(0,0,0,.52);
+  --glass-border: rgba(255,255,255,.18);
+  --shadow: 0 12px 40px rgba(0,0,0,.45);
+  --blur-start: 10px; /* start blur (lighter than before) */
+  --blur-end: 0px;
+}
+
+/* ---- base ---- */
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  color:#fff;
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
+  overflow:hidden;
+}
+
+.stage{
+  position:relative;
+  width:100%;
+  height:100svh;
+  min-height:100vh;
+  background:#000;
+}
+
+/* soft vignette to keep text readable on any frame */
+.stage::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(80% 65% at 50% 40%, rgba(0,0,0,.18) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.78) 100%);
+  z-index:2;
+}
+
+/* ---- video layer ---- */
+.video-layer{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  overflow:hidden;
+  filter: blur(var(--blur-start)) saturate(1.12) contrast(1.04);
+  transform: scale(1.03); /* blur edge compensation */
+  transition: filter 1.1s ease;
+}
+
+.video-ready .video-layer{
+  filter: blur(var(--blur-end)) saturate(1.0) contrast(1.0);
+}
+
+video.bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ---- top/bottom logos ---- */
+.logo-top,.logo-bottom{
+  position:absolute;
+  left:50%;
+  transform: translateX(-50%);
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:auto;
+}
+
+.logo-top{
+  top: calc(env(safe-area-inset-top) + 10px);
+}
+.logo-bottom{
+  bottom: calc(env(safe-area-inset-bottom) + 14px);
+}
+
+.logo-top img{
+  width:min(520px, 78vw);
+  height:auto;
+  filter: drop-shadow(0 10px 28px rgba(0,0,0,.55));
+}
+.logo-bottom img{
+  width:min(420px, 70vw);
+  height:auto;
+  opacity:.92;
+  filter: drop-shadow(0 8px 22px rgba(0,0,0,.5));
+}
+
+/* ---- SoundBetter callout ---- */
+.sb-callout{
+  position:absolute;
+  left:50%;
+  top: 52svh; /* center-ish but slightly lower */
+  transform: translateX(-50%) translateY(22px);
+  z-index:6;
+
+  display:flex;
+  align-items:center;
+  gap:18px;
+
+  opacity:0;
+  transition: opacity .8s ease, transform .6s ease;
+  pointer-events:none;
+}
+
+ .video-ready .sb-callout{
+  transform: translateX(-50%) translateY(0);
+}
+
+.sb-badge{
+  width:168px; /* <- bigger badge */
+  height:auto;
+  display:block;
+}
+
+.sb-badge img{
+  width:100%;
+  height:auto;
+  display:block;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,.65));
+}
+
+/* A tiny “anti-blur pop” before video is ready */
+.stage:not(.video-ready) .sb-badge img{
+  filter:
+    drop-shadow(0 0 12px rgba(255,255,255,.26))
+    drop-shadow(0 14px 34px rgba(0,0,0,.72));
+}
+
+.sb-ctas{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.sb-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:12px 18px;
+  border-radius:999px;
+  text-decoration:none;
+  color:#fff;
+  background: var(--glass-bg);
+  border:1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  font-weight:700;
+  letter-spacing:.02em;
+  white-space:nowrap;
+  transform: translateZ(0);
+}
+
+.sb-cta:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 18px 56px rgba(0,0,0,.55);
+}
+
+.sb-word{
+  position:relative;
+  padding-bottom:2px;
+}
+.sb-word::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-2px;
+  height:2px;
+  background: rgb(var(--brand-accent));
+  opacity:.9;
+}
+
+.sb-sub{
+  display:inline-block;
+  font-size:12px;
+  color:rgba(255,255,255,.72);
+  text-decoration:none;
+  margin-top:2px;
+}
+.sb-sub:hover{ color:#fff; text-decoration:underline; }
+
+/* ---- social links row ---- */
+.social-links{
+  position:absolute;
+  left:50%;
+  bottom: calc(env(safe-area-inset-bottom) + 96px);
+  transform: translateX(-50%);
+  z-index:6;
+
+  display:flex;
+  gap:14px;
+  align-items:center;
+  justify-content:center;
+}
+
+.social-links a{
+  width:42px;
+  height:42px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background: rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.14);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 28px rgba(0,0,0,.35);
+  transition: transform .2s ease, background .2s ease;
+}
+
+.social-links a:hover{
+  transform: translateY(-1px);
+  background: rgba(0,0,0,.58);
+}
+
+.social-links img{
+  width:24px;
+  height:24px;
+  object-fit:contain;
+  display:block;
+}
+
+/* ---- full-area click (optional) ---- */
+.cover-enter{
+  position:absolute;
+  inset:0;
+  z-index:4; /* below buttons */
+  display:block;
+}
+
+/* keep CTAs clickable */
+.sb-callout, .social-links, .logo-top, .logo-bottom{ pointer-events:auto; }
+.cover-enter{ pointer-events:auto; }
+.sb-callout, .social-links{ pointer-events:auto; }
+
+/* Put cover-enter under interactive elements */
+.sb-callout, .social-links, .logo-top, .logo-bottom{ z-index:6; }
+.stage::after{ z-index:2; }
+.video-layer{ z-index:1; }
+.cover-enter{ z-index:3; }
+
+/* ---- responsive ---- */
+@media (max-width: 900px){
+  .sb-callout{
+    top: 58svh;                 /* lower on mobile */
+    transform: translateX(-50%) translateY(10px);
+    gap:14px;
+  }
+  .sb-badge{ width:150px; }
+  .sb-cta{ padding:10px 14px; font-size:14px; }
+  .social-links{
+    bottom: calc(env(safe-area-inset-bottom) + 86px);
+    gap:12px;
+  }
+  .social-links a{ width:40px; height:40px; border-radius:12px; }
+}
+
+@media (max-width: 600px){
+  .logo-top{ top: calc(env(safe-area-inset-top) + 8px); }
+  .logo-top img{ width:86vw; }
+  .logo-bottom img{ width:74vw; }
+
+  /* Hide YouTube on mobile if you want the SoundBetter icon instead */
+  .social-links a.yt-only{ display:none; }
+}
+
+
+/* Utility */
+.pc-only{display:block}
+.mobile-only{display:none}
