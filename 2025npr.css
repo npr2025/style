@@ -129,7 +129,8 @@ video.bg{
   width:100%;
   height:auto;
   display:block;
-  filter: drop-shadow(0 12px 30px rgba(0,0,0,.65));
+  /* 【修正】この行だけ追加しました（色反転） */
+  filter: invert(1) drop-shadow(0 12px 30px rgba(0,0,0,.65));
 }
 
 /* A tiny “anti-blur pop” before video is ready */
