@@ -102,7 +102,7 @@ video.bg{
 .sb-callout{
   position:absolute;
   left:50%;
-  /* 【修正】ここを52svhから60svhに変更して位置を下げました */
+  /* 【修正】ここを 60svh に変更して位置を少し下げました */
   top: 60svh;
   transform: translateX(-50%) translateY(22px);
   z-index:6;
@@ -130,7 +130,7 @@ video.bg{
   width:100%;
   height:auto;
   display:block;
-  /* 【修正】ここに invert(1) を追加してバッジを白く反転しました */
+  /* 【修正】invert(1)を追加して黒バッジを白く反転しました */
   filter: invert(1) drop-shadow(0 12px 30px rgba(0,0,0,.65));
 }
 
